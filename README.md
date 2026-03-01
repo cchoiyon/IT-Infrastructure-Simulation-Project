@@ -60,13 +60,42 @@ To allow the lab environment to communicate internally while sharing the host’
    ```powershell
    New-VMSwitch -Name "LabNAT" -SwitchType Internal
 <img src="./images/pic2.png" alt="powershellpic" pic width="400">
-  
 
 
+---
 
+## Phase 2: Virtual Machine Provisioning
 
+With the networking foundation in place, the next phase involves deploying the core virtual machines that make up the infrastructure.
 
-### Next Steps (in progress)
+### 2.1 Provisioning the Domain Controller (Server 01)
+The first system deployed is the **Domain Controller (DC01)**, which will eventually manage Active Directory, DNS, and DHCP services for the `CHOIYONTECH` environment.
+
+**Configuration Details:**
+* **Name:** `DC01`
+* **OS:** Windows Server 2022
+* **Storage Path:** `C:\Hyper-V\VMs\`
+
+I used the **New Virtual Machine Wizard** in Hyper-V to define the resource allocation and storage location.
+
+<img src="./images/pic3.png" alt="pic3" width="400">
+
+### 2.2 Standardized Resource Allocation
+To ensure optimal performance across the lab, I followed these specifications for the initial setup:
+
+| VM Name | vCPUs | RAM (Startup) | Dynamic Memory | Disk Size |
+| :--- | :--- | :--- | :--- | :--- |
+| **DC01** | 2 | 2048 MB | Enabled | 60 GB |
+| **Server02** | 2 | 2048 MB | Enabled | 50 GB |
+| **Server03** | 1 | 1024 MB | Enabled | 30 GB |
+
+---
+
+## Progress Tracker & Next Steps
+
+* [x] Unlocking Hyper-V & Virtualization
+* [x] NAT Virtual Switch & Networking Foundation
+* [x] **Initial VM Provisioning (DC01 Started)**
 * [ ] Domain Configuration & Active Directory Integration
 * [ ] DHCP & DNS Setup
 * [ ] User & Group Policy Management
