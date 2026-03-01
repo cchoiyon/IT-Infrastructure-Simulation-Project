@@ -38,6 +38,8 @@ To maintain organizational standards and ensure asset traceability, all client m
 
 ---
 
+---
+
 ## Phase 1: Laying the Foundation (Hyper-V Setup)
 
 Before building the virtual domain, I needed a hypervisor to host it. I opted for Microsoft's native **Hyper-V** to manage the virtualization layer.
@@ -47,14 +49,21 @@ To get started, the built-in virtualization capabilities on the host machine nee
 1. Navigated to **Control Panel > Programs > Programs and Features**.
 2. Clicked on **Turn Windows features on or off**.
 3. Checked the box for **Hyper-V**, hit OK, and rebooted the host machine to apply changes.
-<img src="./images/Picture1.png" alt="pic" width="400">
+<img src="./images/Picture1.png" alt="hyper v pic width="400">
 
-### 1.2 Architecting the Virtual Network
-A lab is no good if the machines can't communicate.
-1. Opened **Hyper-V Manager**.
-2. Launched the **Virtual Switch Manager** from the Actions pane.
-3. Created a new **External virtual switch** linked to my primary network adapter.
-   * *Purpose:* This acts as the bridge, allowing VMs to securely access the physical network and the internet.
+
+### 1.2 Creating the Virtual Network (NAT)
+To allow the lab environment to communicate internally while sharing the host’s internet connection, I configured a **NAT (Network Address Translation)** virtual switch via PowerShell.
+
+1. **Initialize the Internal Switch:**
+   Using an elevated PowerShell session, I created a new internal switch named `LabNAT`.
+   ```powershell
+   New-VMSwitch -Name "LabNAT" -SwitchType Internal
+<img src="./images/pic2.png" alt="hyper v pic width="400">
+  
+
+
+
 
 
 ### Next Steps (in progress)
