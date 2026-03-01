@@ -73,15 +73,15 @@ The first system deployed is the **Domain Controller (DC01)**, which will eventu
 
 1. **Naming and Location:**
    I named the virtual machine `DC01` and designated a specific storage directory at `C:\Hyper-V\VMs\` to keep the project files organized and separate from the default system drive.
-   ![Specify Name and Location](./images/pic3.png)
+<img src="./images/pic3.png" alt="pic3" width="400">
 
 2. **Specifying Generation:**
    I selected **Generation 1** for this virtual machine to ensure maximum compatibility with the legacy BIOS requirements often found in diverse lab environments and older software configurations.
-   ![Specify Generation](./images/pic4.png)
+<img src="./images/pic4.png" alt="pic4" width="400">
 
 3. **Memory Allocation:**
    I allocated **4096 MB (4 GB)** of startup memory to ensure smooth performance during the Windows Server 2022 installation and subsequent Active Directory promotion. I also enabled **Dynamic Memory** to allow the host to reclaim unused RAM when the server is idle.
-   ![Assign Memory](./images/pic5.png)
+<img src="./images/pic5.png" alt="pic4" width="400">
 
 ---
 
