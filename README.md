@@ -68,26 +68,20 @@ To allow the lab environment to communicate internally while sharing the host’
 
 With the networking foundation in place, the next phase involves deploying the core virtual machines that make up the infrastructure.
 
-### 2.1 Provisioning the Domain Controller (Server 01)
+### 2.1 Provisioning the Domain Controller (DC01)
 The first system deployed is the **Domain Controller (DC01)**, which will eventually manage Active Directory, DNS, and DHCP services for the `CHOIYONTECH` environment.
 
-**Configuration Details:**
-* **Name:** `DC01`
-* **OS:** Windows Server 2022
-* **Storage Path:** `C:\Hyper-V\VMs\`
+1. **Naming and Location:**
+   I named the virtual machine `DC01` and designated a specific storage directory at `C:\Hyper-V\VMs\` to keep the project files organized and separate from the default system drive.
+   ![Specify Name and Location](./images/pic3.png)
 
-I used the **New Virtual Machine Wizard** in Hyper-V to define the resource allocation and storage location.
+2. **Specifying Generation:**
+   I selected **Generation 1** for this virtual machine to ensure maximum compatibility with the legacy BIOS requirements often found in diverse lab environments and older software configurations.
+   ![Specify Generation](./images/pic4.png)
 
-<img src="./images/pic3.png" alt="pic3" width="400">
-
-### 2.2 Standardized Resource Allocation
-To ensure optimal performance across the lab, I followed these specifications for the initial setup:
-
-| VM Name | vCPUs | RAM (Startup) | Dynamic Memory | Disk Size |
-| :--- | :--- | :--- | :--- | :--- |
-| **DC01** | 2 | 2048 MB | Enabled | 60 GB |
-| **Server02** | 2 | 2048 MB | Enabled | 50 GB |
-| **Server03** | 1 | 1024 MB | Enabled | 30 GB |
+3. **Memory Allocation:**
+   I allocated **4096 MB (4 GB)** of startup memory to ensure smooth performance during the Windows Server 2022 installation and subsequent Active Directory promotion. I also enabled **Dynamic Memory** to allow the host to reclaim unused RAM when the server is idle.
+   ![Assign Memory](./images/pic5.png)
 
 ---
 
@@ -95,8 +89,8 @@ To ensure optimal performance across the lab, I followed these specifications fo
 
 * [x] Unlocking Hyper-V & Virtualization
 * [x] NAT Virtual Switch & Networking Foundation
-* [x] **Initial VM Provisioning (DC01 Started)**
+* [x] **Initial VM Provisioning (DC01 Configured)**
+* [ ] Configuring Virtual Hard Disk (VHDX)
+* [ ] Windows Server 2022 OS Installation
+* [ ] Static IP Configuration for DC01
 * [ ] Domain Configuration & Active Directory Integration
-* [ ] DHCP & DNS Setup
-* [ ] User & Group Policy Management
-* [ ] Security Hardening
