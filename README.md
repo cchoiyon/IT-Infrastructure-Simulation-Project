@@ -18,7 +18,7 @@ The environment consists of a hybrid architecture including Windows Server 2022 
 | **Server 01** | Windows Server 2022 | **Domain Controller (DC):** Responsible for managing Active Directory (AD) and handling authentication/authorization within the domain. |
 | **Server 02** | Windows Server 2022 | **Utility Server:** Used for file storage, applications, or additional services required within the network. |
 | **Server 03** | Linux (Debian 12.5) | **Monitoring Node:** Implemented to monitor the network and all devices within it. |
-| **Workstations**| Windows Clients   | [**Client Machines:** Four workstations joined to the domain to simulate end-user environments. |
+| **Workstations**| Windows Clients   | **Client Machines:** Four workstations joined to the domain to simulate end-user environments. |
 
 ---
 
