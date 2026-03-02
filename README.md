@@ -216,6 +216,24 @@ With the network settings verified, I navigated to the System Properties on the 
 <img src="./images/pic24.png" alt="Joining Workstation to Domain" width="500">
 
 ---
+## Phase 6: User & Group Management
+
+To transform the lab into a simulation of a live enterprise, I populated the directory with a diverse set of users assigned to specific departmental Organizational Units (OUs).
+
+### 6.1 User Account Provisioning
+I established a primary user list to simulate various roles across the organization. Each account was configured with standardized attributes including unique usernames, job titles, and departmental assignments to ensure proper resource access and policy application.
+
+I utilized **Active Directory Users and Computers (ADUC)** to create a dedicated container named `CHOIYONTECH_Users` to manage the core staff accounts.
+<img src="./images/picusers.png" alt="ADUC User Management" width="500">
+
+### 6.2 Directory Population & Verification
+I verified the global user list within the **Active Directory Administrative Center (ADAC)**. This view confirms that accounts for users such as Amara Okafor, Simon De Backer, and Lakshmi Chakraborty are correctly initialized within the `choiyontech.local` domain.
+<img src="./images/picusers1.png" alt="ADAC Global User List" width="500">
+
+Finally, I cross-referenced the departmental placement to ensure users were correctly nested within the `Bangladesh` OU hierarchy, specifically checking the **Finance** sub-OU for proper inheritance.
+<img src="./images/pic23.png" alt="OU Hierarchy Verification" width="500">
+
+---
 
 ## Progress Tracker & Next Steps
 
@@ -223,9 +241,9 @@ With the network settings verified, I navigated to the System Properties on the 
 * [x] NAT Virtual Switch & Networking Foundation
 * [x] Initial VM Provisioning (DC01, SV02, PC01-04)
 * [x] Windows Server 2022 OS Installation
-* [x] **AD DS Forest Promotion (choiyontech.local)**
-* [x] **Departmental OU Structure Implementation**
-* [x] **Successful Domain Join (PC01)**
-* [ ] Bulk User Creation via PowerShell/CSV
+* [x] AD DS Forest Promotion (choiyontech.local)
+* [x] Departmental OU Structure Implementation
+* [x] **Bulk User Account Provisioning**
 * [ ] DHCP Scope Implementation
 * [ ] Group Policy (GPO) Security Hardening
+* [ ] Network Monitoring Node (Debian) Setup
