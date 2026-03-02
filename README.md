@@ -3,6 +3,20 @@
 Welcome to my enterprise IT and security Simulation! This project is a documentation of my journey building a corporate IT environment from scratch. Designed to simulate real-world infrastructure, this lab serves as a dedicated space for practicing system administration, security engineering, and network deployment.
 
 
+## Table of Contents
+
+* [Project Overview](#project-overview)
+* [Lab Specifications & Infrastructure](#lab-specifications--infrastructure)
+* [Naming Convention](#naming-convention)
+* [Phase 1: Laying the Foundation (Hyper-V Setup)](#phase-1-laying-the-foundation-hyper-v-setup)
+    * [1.1 Unlocking Hyper-V](#11-unlocking-hyper-v)
+    * [1.2 Creating the Virtual Network (NAT)](#12-creating-the-virtual-network-nat)
+* [Phase 2: Virtual Machine Provisioning](#phase-2-virtual-machine-provisioning)
+    * [2.1 Provisioning the Domain Controller (DC01)](#21-provisioning-the-domain-controller-dc01)
+* [Progress Tracker & Next Steps](#progress-tracker--next-steps)
+
+---
+
 ## Project Overview
 
 The goal of this simulation is to bridge the gap between theory and practice by deploying a **fully functional Active Directory environment**, configuring network security policies, and managing endpoints just like a modern enterprise. This project serves as a comprehensive documentation of my progress in learning IT infrastructure and administration.
