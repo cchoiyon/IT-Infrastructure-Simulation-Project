@@ -75,7 +75,6 @@ To allow the lab environment to communicate internally while sharing the host’
    New-VMSwitch -Name "LabNAT" -SwitchType Internal
 <img src="./images/pic2.png" alt="powershellpic" pic width="400">
 
-
 ---
 
 ## Phase 2: Virtual Machine Provisioning
@@ -83,23 +82,41 @@ To allow the lab environment to communicate internally while sharing the host’
 With the networking foundation in place, the next phase involves deploying the core virtual machines that make up the infrastructure.
 
 ### 2.1 Provisioning the Domain Controller (DC01)
-The first system deployed is the **Domain Controller (DC01)**, which will eventually manage Active Directory, DNS, and DHCP services for the `CHOIYONTECH` environment.
+The first system deployed is the **Domain Controller (DC01)**, which will eventually manage Active Directory, DNS, and DHCP services.
 
 1. **Naming and Location:**
-   I named the virtual machine `DC01` and designated a specific storage directory at `C:\Hyper-V\VMs\` to keep the project files organized and separate from the default system drive.
-<img src="./images/pic3.png" alt="pic3" width="400">
+   I named the virtual machine `DC01` and designated a specific storage directory at `C:\Hyper-V\VMs\` to keep project files organized.
+   <img src="./images/pic3.png" alt="pic3" width="400">
 
 2. **Specifying Generation:**
-   I selected **Generation 1** for this virtual machine to ensure maximum compatibility with the legacy BIOS requirements often found in diverse lab environments and older software configurations.
-<img src="./images/pic4.png" alt="pic4" width="400">
+   I selected **Generation 1** for maximum compatibility with legacy BIOS requirements and diverse lab environments.
+   <img src="./images/pic4.png" alt="pic4" width="400">
 
 3. **Memory Allocation:**
-   I allocated **4096 MB (4 GB)** of startup memory to ensure smooth performance during the Windows Server 2022 installation and subsequent Active Directory promotion. I also enabled **Dynamic Memory** to allow the host to reclaim unused RAM when the server is idle.
-<img src="./images/pic5.png" alt="pic4" width="400">
+   I allocated **4096 MB (4 GB)** of startup memory and enabled **Dynamic Memory** to optimize host resource usage.
+   <img src="./images/pic5.png" alt="pic5" width="400">
 
 4. **Configuring Networking:**
-   I connected the virtual network adapter to the **LabNAT** internal switch created in Phase 1. This ensures the VM is isolated within the lab network while maintaining the path for NAT-based internet access.
-<img src="./images/pic6.png" alt="pic6" width="400">
+   I connected the adapter to the **LabNAT** internal switch to ensure isolation while maintaining internet access through the host.
+   <img src="./images/pic6.png" alt="pic6" width="400">
+
+5. **OS Installation Media:**
+   I mapped the virtual DVD drive to the Windows Server 2022 Evaluation ISO to prepare for the initial OS boot and configuration.
+   <img src="./images/pic9.png" alt="pic9" width="400">
+
+### 2.2 Expanding the Infrastructure (SV02 & Client Workstations)
+After completing the DC01 setup, I began provisioning the rest of the enterprise environment.
+
+* **Utility Server (SV02):** Created to handle file storage and application services.
+  <img src="./images/pic7.png" alt="pic7" width="400">
+
+* **Workstation Deployment (CHOIYONTECH-PC01):**
+  I started the rollout of the client machines following the strict naming convention. These machines are configured as Generation 1 VMs to match the server environment.
+  <img src="./images/pic8.png" alt="pic8" width="400">
+
+### 2.3 Hyper-V Environment Overview
+Once the initial provisioning was complete, my Hyper-V Manager displayed the full roster of virtual assets ready for configuration.
+<img src="./images/pic10.png" alt="pic10" width="400">
 
 ---
 
@@ -107,8 +124,8 @@ The first system deployed is the **Domain Controller (DC01)**, which will eventu
 
 * [x] Unlocking Hyper-V & Virtualization
 * [x] NAT Virtual Switch & Networking Foundation
-* [x] **Initial VM Provisioning (DC01 Configured)**
-* [ ] Configuring Virtual Hard Disk (VHDX)
-* [ ] Windows Server 2022 OS Installation
+* [x] **Initial VM Provisioning (Servers & Clients Created)**
+* [ ] Windows Server 2022 OS Installation & Optimization
 * [ ] Static IP Configuration for DC01
 * [ ] Domain Configuration & Active Directory Integration
+* [ ] Joining Workstations to the Domain
