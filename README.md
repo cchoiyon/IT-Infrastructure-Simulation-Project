@@ -233,6 +233,15 @@ I utilized **Active Directory Users and Computers (ADUC)** to create a dedicated
 I verified the global user list within the **Active Directory Administrative Center (ADAC)**. This view confirms that accounts for users such as Amara Okafor, Simon De Backer, and Lakshmi Chakraborty are correctly initialized within the `choiyontech.local` domain.
 <img src="./images/picusers1.png" alt="ADAC Global User List" width="500">
 
+6.3 Configuring UPN Suffixes for Cloud Readiness
+To prepare the local environment for future hybrid integration (such as Microsoft 365), I configured an alternative **User Principal Name (UPN) Suffix**. This ensures that local user accounts can use a publicly routable domain name for logins rather than the internal `.local` extension.
+
+1. **Adding the Alternative UPN Suffix:**
+   Using **Active Directory Domains and Trusts**, I accessed the properties of the forest to add `choiyontech.onmicrosoft.com` as an alternative UPN suffix.
+
+2. **Assigning Suffixes to Users:**
+   I then utilized the **Active Directory Administrative Center** to bulk-update user accounts. This allows users to authenticate using the new suffix, facilitating a seamless transition for future cloud-based services.
+  
 ---
 
 ## Progress Tracker & Next Steps
