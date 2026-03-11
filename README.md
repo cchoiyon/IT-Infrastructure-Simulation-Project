@@ -23,8 +23,14 @@ Welcome to my enterprise IT and security Simulation! This project is a documenta
 * [Phase 6: User & Group Management](#phase-6-user--group-management)
     * [6.1 User Account Provisioning](#61-user-account-provisioning)
     * [6.2 Directory Population & Verification](#62-directory-population--verification)
-* [Progress Tracker & Next Steps](#progress-tracker--next-steps)
+    * [6.3 Configuring UPN Suffixes for Cloud Readiness](#63-configuring-upn-suffixes-for-cloud-readiness)
+* [Phase 7: Group Policy Management & Security Hardening](#phase-7-group-policy-management--security-hardening)
+    * [7.1 GPO Infrastructure & Creation](#71-gpo-infrastructure--creation)
+    * [7.2 Implementing Interactive Logon Banners](#72-implementing-interactive-logon-banners)
+    * [7.3 Policy Linking & Enforcement](#73-policy-linking--enforcement)
+    * [7.4 Client-Side Policy Verification](#74-client-side-policy-verification)
 
+* [Progress Tracker & Next Steps](#progress-tracker--next-steps)
 ---
 
 ## Project Overview
@@ -243,7 +249,40 @@ To prepare the local environment for future hybrid integration (such as Microsof
 3. **Assigning Suffixes to Users:**
    I then utilized the **Active Directory Administrative Center** to bulk-update user accounts. This allows users to authenticate using the new suffix, facilitating a seamless transition for future cloud-based services.
    <img src="./images/adduserpic2.png" alt="ADAC Global User List" width="500">
-  
+
+
+
+---
+
+## Phase 7: Group Policy Management & Security Hardening
+
+To enforce security standards and maintain administrative control over the domain, I implemented **Group Policy Objects (GPOs)** to define specific configurations and security settings across the infrastructure.
+
+### 7.1 GPO Infrastructure & Creation
+I utilized the **Group Policy Management Console (GPMC)** to manage the organizational forest. I created a new GPO named `GPO_Security_Lockdown` under the **Group Policy Objects** container to serve as the baseline security template for the domain.
+<img src="./images/gpo.jpg" alt="Group Policy Management Console" width="500">
+<img src="./images/gpo1.jpg" alt="Creating Security Lockdown GPO" width="500">
+
+### 7.2 Implementing Interactive Logon Banners
+To meet enterprise security compliance, I configured an interactive logon banner to notify users of authorized access only. 
+
+1. **Policy Configuration:** Navigated to `Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options`.
+   <img src="./images/gpo2.jpg" alt="Security Options Navigation" width="500">
+
+2. **Defining the Legal Notice:** I configured the **Message text for users attempting to log on** with a formal warning notice.
+   <img src="./images/gpo3.jpg" alt="Configuring Logon Message Text" width="500">
+
+3. **Defining the Title:** I set the **Message title for users attempting to log on** to "OFFICIAL SECURITY NOTICE" to ensure visibility at the login screen.
+   <img src="./images/gpo4.jpg" alt="Configuring Logon Message Title" width="500">
+
+### 7.3 Policy Linking & Enforcement
+Once the security settings were defined, I linked the `GPO_Security_Lockdown` object to the `CHOIYONTECH_Users` Organizational Unit. This ensures that the security baseline is applied strictly to all users within that container.
+<img src="./images/gpo5.jpg" alt="Linking GPO to OU" width="500">
+
+### 7.4 Client-Side Policy Verification
+To verify the deployment, I accessed the `CHOIYONTECH-PC01` workstation and ran the command `gpupdate /force` in an elevated Command Prompt. This forces the client machine to pull the latest updates from the Domain Controller immediately.
+<img src="./images/gpo6.jpg" alt="Forcing Group Policy Update" width="500">
+
 ---
 
 ## Progress Tracker & Next Steps
@@ -254,7 +293,9 @@ To prepare the local environment for future hybrid integration (such as Microsof
 * [x] Windows Server 2022 OS Installation
 * [x] AD DS Forest Promotion (choiyontech.local)
 * [x] Departmental OU Structure Implementation
-* [x] **Bulk User Account Provisioning & Management**
+* [x] Alternative UPN Suffix Configuration
+* [x] **Group Policy Security Baseline (Logon Banners)**
 * [ ] DHCP Scope Implementation
-* [ ] Group Policy (GPO) Security Hardening
+* [ ] Folder Redirection & Drive Mapping GPOs
 * [ ] Network Monitoring Node (Debian) Setup
+
