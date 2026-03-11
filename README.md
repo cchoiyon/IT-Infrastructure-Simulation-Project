@@ -238,9 +238,11 @@ To prepare the local environment for future hybrid integration (such as Microsof
 
 1. **Adding the Alternative UPN Suffix:**
    Using **Active Directory Domains and Trusts**, I accessed the properties of the forest to add `choiyontech.onmicrosoft.com` as an alternative UPN suffix.
+   <img src="./images/adduserpic.png" alt="ADAC Global User List" width="500">
 
-2. **Assigning Suffixes to Users:**
+3. **Assigning Suffixes to Users:**
    I then utilized the **Active Directory Administrative Center** to bulk-update user accounts. This allows users to authenticate using the new suffix, facilitating a seamless transition for future cloud-based services.
+   <img src="./images/adduserpic2.png" alt="ADAC Global User List" width="500">
   
 ---
 
