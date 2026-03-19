@@ -29,6 +29,10 @@ Welcome to my enterprise IT and security Simulation! This project is a documenta
     * [7.2 Implementing Interactive Logon Banners](#72-implementing-interactive-logon-banners)
     * [7.3 Policy Linking & Enforcement](#73-policy-linking--enforcement)
     * [7.4 Client-Side Policy Verification](#74-client-side-policy-verification)
+ * [Phase 8: DHCP Server Implementation](#phase-8-dhcp-server-implementation)
+    * [8.1 DHCP Role Installation & Authorization](#81-dhcp-role-installation--authorization)
+    * [8.2 Scope Configuration](#82-scope-configuration)
+    * [8.3 Client Verification](#83-client-verification)
 
 * [Progress Tracker & Next Steps](#progress-tracker--next-steps)
 ---
@@ -289,6 +293,38 @@ To verify the deployment, I accessed the `CHOIYONTECH-PC01` workstation and ran 
 
 ---
 
+## Phase 8: DHCP Server Implementation
+
+To automate network configuration and streamline the onboarding of new workstations, I deployed and configured a **DHCP (Dynamic Host Configuration Protocol)** server role on `DC01`.
+
+### 8.1 DHCP Role Installation & Authorization
+I initiated the installation through the **Add Roles and Features Wizard**, ensuring all prerequisite security and network settings were verified.
+<img src="./images/DHCP-01.png" alt="DHCP Installation Wizard" width="500">
+
+I selected the **DHCP Server** role and included the necessary Remote Server Administration Tools (RSAT).
+<img src="./images/DHCP-02.png" alt="Selecting DHCP Role" width="500">
+
+After the role installation, I completed the **DHCP Post-Install configuration** by authorizing the server in Active Directory using the Domain Administrator credentials. This prevents unauthorized DHCP servers from operating within the domain.
+<img src="./images/DHCP-03.png" alt="DHCP Authorization" width="500">
+
+### 8.2 Scope Configuration
+I utilized the **New Scope Wizard** to define the range of IP addresses that the server would distribute to clients in the `192.168.10.0` subnet.
+<img src="./images/Scope-01.png" alt="New Scope Wizard" width="500">
+
+I defined the address pool for the lab workstations:
+* **Start IP Address:** `192.168.10.100`
+* **End IP Address:** `192.168.10.200`
+* **Subnet Mask:** `255.255.255.0` (/24)
+<img src="./images/Scope-02.png" alt="IP Address Range" width="500">
+
+### 8.3 Client Verification
+To verify the implementation, I updated the network settings on a client workstation to **Obtain an IP address automatically**.
+<img src="./images/Scope-03.png" alt="Client DHCP Request" width="400">
+
+The client successfully received a dynamic lease from the specified scope, confirming that the DHCP server was correctly routing and assigning addresses within the `choiyontech.local` environment.
+
+---
+
 ## Progress Tracker & Next Steps
 
 * [x] Unlocking Hyper-V & Virtualization
@@ -298,9 +334,11 @@ To verify the deployment, I accessed the `CHOIYONTECH-PC01` workstation and ran 
 * [x] AD DS Forest Promotion (choiyontech.local)
 * [x] Departmental OU Structure Implementation
 * [x] Alternative UPN Suffix Configuration
-* [x] **Group Policy Security Baseline (Logon Banners)**
-* [ ] DHCP Scope Implementation
+* [x] Group Policy Security Baseline (Logon Banners)
+* [x] **DHCP Role Installation & Scope Configuration**
 * [ ] Folder Redirection & Drive Mapping GPOs
 * [ ] Network Monitoring Node (Debian) Setup
+
+
 
 
